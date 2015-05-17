@@ -1,5 +1,8 @@
 //get socket
-var socket = io();
+
+
+var socket = io("http://19fae1e7.ngrok.com");
+//var socket = io();
 
 //on submit in form <- THIS IS BROWSER Functionality
 //      $('form').submit(function(){

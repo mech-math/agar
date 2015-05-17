@@ -3,25 +3,51 @@
   <head>
     <title>Socket.IO chat</title>
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      div { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      div input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      div button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
+      /** { margin: 0; padding: 0; box-sizing: border-box; }*/
+      /*body { font: 13px Helvetica, Arial; }*/
+      /*div { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }*/
+      /*div input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }*/
+      /*div button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }*/
+      /*#messages { list-style-type: none; margin: 0; padding: 0; }*/
+      /*#messages li { padding: 5px 10px; }*/
+      /*#messages li:nth-child(odd) { background: #eee; }*/
     </style>
   </head>
   <body>
-    <ul id="messages"></ul>
+
+
     <!--<form action="">-->
     <div>
       <input id="m" autocomplete="off" /><button onclick="sendMe()">Send</button>
     </div>
-    <!--</form>-->
+    <ul id="messages"></ul>
+
+
+    <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
+
+    <div id="login_button" onclick="VK.Auth.login(authInfo);"></div>
+
+    <script language="javascript">
+      var YOUR_API_ID = 4784488;
+
+      VK.init({
+        apiId: YOUR_API_ID
+      });
+      function authInfo(response) {
+        if (response.session) {
+          alert('user: '+response.session.mid);
+        } else {
+          alert('not auth');
+        }
+      }
+      VK.Auth.getLoginStatus(authInfo);
+      VK.UI.button('login_button');
+    </script>
+
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+
+
     <script src="main.js">
 
     </script>
